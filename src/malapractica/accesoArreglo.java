@@ -1,19 +1,27 @@
 package malapractica;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class accesoArreglo {
 
-    public void accederElemento(int[])
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    public void accederElemento(int[] arreglo, int indice){
+        try{
+            //Se intenta acceder al elemento con el indice especificado
+            int elemento = arreglo[indice];
+            System.out.println("Elemento: " + elemento);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            //Maneja la excepcion en el caso que el indice este fuera del rango
+            System.err.println("ERROR: INDICE FUERA DEL RANGO");
         }
+    }
+
+    public static void main(String[] args) {
+        accesoArreglo obj = new accesoArreglo();
+
+        //ARRAY DE EJEMPLO
+        int[] arregloEjemplo = {10,20,30,40,50,60};
+
+        //INDICE VALIDO
+        obj.accederElemento(arregloEjemplo,3);
+        //INDICE NO VALIDO
+        obj.accederElemento(arregloEjemplo,6);
     }
 }
